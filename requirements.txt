@@ -1,0 +1,14 @@
+# Core LLM/Orchestration
+langchain
+langgraph
+openai
+
+# RAG/Vector Database
+chromadb
+
+# Web Search Tool
+tavily-python
+
+# Utility/Data Handling
+pydantic  # For defining State and data schemas
+python-dotenv # For securely managing API keys
