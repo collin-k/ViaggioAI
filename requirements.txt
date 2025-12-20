@@ -10,5 +10,5 @@ chromadb
 tavily-python
 
 # Utility/Data Handling
-pydantic  # For defining State and data schemas
-python-dotenv # For securely managing API keys
+pydantic
+python-dotenv
