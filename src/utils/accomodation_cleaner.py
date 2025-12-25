@@ -1,9 +1,13 @@
 """This module cleans and standardizes Airbnb listings data."""
 
+import argparse
 import numpy as np
 import os
 import pandas as pd
 import re
+
+from argparse import Namespace
+from pathlib import Path
 
 # --- HELPER FUNCTIONS ---
 def validate_columns(df, required_cols):
@@ -238,8 +242,27 @@ def process_listings(input_path, output_path):
     listings.to_csv(output_path, index=False)
 
 if __name__ == "__main__":
-    # Define paths relative to the project root
-    RAW_DATA = "data/raw/listings_robust.csv"
-    PROCESSED_DATA = "data/processed/listings_gold.csv"
+
+    parser = argparse.ArgumentParser(
+        description="Process and clean raw listings data"
+    )
+
+    parser.add_argument(
+        "--input", 
+        type=str, 
+        help="Path to the raw listing file"
+    )
+
+    parser.add_argument(
+        "--output", 
+        type=str, 
+        help="Path to processed listing file"
+    )
+
+    args = parser.parse_args()
+
+
+    RAW_DATA = "../../data/raw/linstings/listings_robust.csv"
+    PROCESSED_DATA = "data/processed/listings/listings_cleaned.csv"
     
     process_listings(RAW_DATA, PROCESSED_DATA)
