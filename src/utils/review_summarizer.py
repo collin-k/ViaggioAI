@@ -52,10 +52,11 @@ def get_summary_from_llm(reviews_text):
         print(f"Error during API call: {e}")
         return "Review summary unavailable."
 
-def run_summarization(input_file, output_path):
+def run_summarization(): 
+    # //input_file, output_path):
     # print("📂 Loading reviews and listings...")
-    reviews = pd.read_csv("../../data/raw/reviews/florence_reviews.csv")
-    listings = pd.read_csv("../../data/processed/listings/florence_listings.csv")
+    reviews = pd.read_csv("data/raw/reviews/florence_reviews.csv")
+    listings = pd.read_csv("data/processed/listings/listings_cleaned.csv")
 
     # 2. Sort by date and take the Top 10 per listing
     reviews['date'] = pd.to_datetime(reviews['date'])
@@ -88,7 +89,7 @@ def run_summarization(input_file, output_path):
     final_df = pd.merge(listings, summary_df, on='id', how='left')
     final_df['review_summary'] = final_df['review_summary'].fillna("No reviews yet.")
     
-    final_df.to_csv("data/combined/listings_with_reviews.csv", index=False)
+    final_df.to_csv("data/processed/listings_with_reviews.csv", index=False)
 
 if __name__ == "__main__":
     run_summarization()

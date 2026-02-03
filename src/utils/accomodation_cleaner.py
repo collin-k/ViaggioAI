@@ -262,7 +262,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
 
-    RAW_DATA = "../../data/raw/linstings/listings_robust.csv"
+    RAW_DATA = "data/raw/listings/florence_listings_raw.csv"
     PROCESSED_DATA = "data/processed/listings/listings_cleaned.csv"
     
     process_listings(RAW_DATA, PROCESSED_DATA)
